@@ -13,8 +13,6 @@ contract NFTAirdrop {
     address public owner; 
     address public tokenAddress; 
 
-   
-    // mapping(address => bool) usersClaimed; 
     mapping(address => bool) claimedToken;
 
 
@@ -49,7 +47,7 @@ contract NFTAirdrop {
         merkleRootHash = _new_merkle_root;
     }
 
-    function WithdrawRemainingTokens() external {
+    function tokenRemaining() external {
         _onlyOwner(); 
       
         uint256 _contractBalance = IERC20(tokenAddress).balanceOf(
@@ -86,7 +84,7 @@ contract NFTAirdrop {
 
         _withdraw(msg.sender, _amount);
 
-        // Emit event to indicate successful claim
+       
         emit TokenClaimedSuccessfully();
     }
 
