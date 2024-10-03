@@ -1,12 +1,12 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
-const airdropModule = buildModule("airdropModule", (m) => {
+const tokenAddress = "0x170Bbd5A102B995517B133aa6b9275d103B9a120"
 
-  const airdrop = m.contract("NFTAirdrop");
+const YGYModule = buildModule("YGYModule", (m) => {
 
- 
+  const ygy = m.contract("YgoYabaContract", [tokenAddress]);
 
-  return { airdrop};
+  return { ygy };
 });
 
-export default airdropModule;
+export default YGYModule;
