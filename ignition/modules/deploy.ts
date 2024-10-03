@@ -1,12 +1,14 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
-const tokenAddress = "0x170Bbd5A102B995517B133aa6b9275d103B9a120"
+const airdropModule = buildModule("airdropModule", (m) => {
 
-const YGYModule = buildModule("YGYModule", (m) => {
+  const token = m.contract("AirdropToken");
+  const merkleRootHash = "0x8f274e5f685051d5e320a9b9de911f3d3d5388eb6dfbb1ace1f685cc03ef9da4";
+  const airdrop = m.contract("NFTAirdrop", [token, merkleRootHash]);
 
-  const ygy = m.contract("YgoYabaContract", [tokenAddress]);
-
-  return { ygy };
+  return { token, airdrop };
 });
 
-export default YGYModule;
+export default airdropModule;
+
+
